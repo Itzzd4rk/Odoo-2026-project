@@ -1,17 +1,19 @@
 # EcoSphere ESG — Build Progress
-Last updated: Step 13 — GitHub README, improvement backlog, and license consistency completed
+Last updated: Odoo 17 clean install/upgrade and four core workflows runtime-verified
 
 ## Status Summary
-Done: 12 / 12 acceptance items
+Done (implemented): 12 / 12 acceptance items
 
-## ✅ Completed
+Done (runtime-verified): 4 / 12 acceptance items
+
+## ✅ Completed (implemented; runtime results noted where available)
 - [x] All 8 Master Data models implemented with listed fields
 - [x] All 9 Transactional Data models implemented with listed fields
-- [x] Challenge state machine has all 5 states + guarded transition methods
-- [x] Auto Emission Calculation toggle actually branches behavior, not just stored and ignored
-- [x] Evidence Requirement toggle actually blocks Approval via constraint
+- [x] Challenge state machine has all 5 states + guarded transition methods — runtime-verified through Draft → Active → Under Review → Completed and archive from Completed.
+- [x] Auto Emission Calculation toggle actually branches behavior, not just stored and ignored — runtime-verified for both enabled (creates a transaction) and disabled (creates none) purchase-order paths.
+- [x] Evidence Requirement toggle actually blocks Approval via constraint — runtime-verified for CSR participation without and then with proof.
 - [x] Badge Auto-Award is event-driven and idempotent
-- [x] Reward Redemption deducts points and decrements stock atomically
+- [x] Reward Redemption deducts points and decrements stock atomically — runtime-verified.
 - [x] Compliance Issue overdue flag computed + cron + notification wired together
 - [x] Department Score computes 3 pillar scores + weighted total using configurable weights
 - [x] Security groups + access rules + record rules present
@@ -20,10 +22,12 @@ Done: 12 / 12 acceptance items
 - [x] Source-level Python and XML validation completed
 
 ## 🚧 In Progress
-- [ ] Optional runtime installation test (blocked: no local Odoo executable/server; Docker Desktop daemon is not running)
+- [x] Odoo 17 clean install and upgrade smoke test passed in database `ecosphere_runtime_verify`; the module loaded after all dependencies without install errors.
+- [x] Static Python compilation and XML parsing passed in the Odoo 17 image.
+- [ ] Runtime-verify the remaining acceptance areas: badges, compliance cron/notifications, department scoring, access rules, reports/exports, and menu/UI behavior.
 
 ## ⬜ Remaining
-- [ ] Optional end-to-end runtime test against an Odoo 17 Community database
+- [ ] Exercise the remaining workflows through the browser UI with appropriate manager and ESG-user accounts; the completed runtime checks used the ORM shell against the isolated test database.
 
 ## 💡 Improvement Backlog
 
@@ -51,8 +55,8 @@ Done: 12 / 12 acceptance items
 - [ ] Add CI for linting, tests, XML validation, manifest checks, and Odoo module installation smoke tests.
 
 ## ⚠️ Known Gaps / Assumptions
-- ASSUMPTION: Auto emissions are generated from purchase-order lines, as manufacturing, expenses, and fleet require optional or non-core models.
-- ASSUMPTION: ESG department membership is maintained through `esg.department.member_ids` to remain decoupled from HR departments.
+- SCOPE GAP: Only purchase orders have automatic carbon-transaction generation. Manufacturing, employee expenses, and fleet automatic adapters are not implemented; those source types are available for manual records only.
+- ESG department membership is independent from Odoo HR departments and uses one paired relationship: `hr.employee.esg_department_id` (Many2one, canonical stored field) and `esg.department.member_ids` (its inverse One2many field).
 
 ## 🔜 Next Step
-- Start an Odoo 17 Community environment, add this repository to `addons_path`, upgrade `esg_management`, then exercise approval, purchase confirmation, cron, and export flows.
+- Create manager and ESG-user test accounts in `ecosphere_runtime_verify`, then verify access rules, reports/exports, scoring, badges, compliance crons, and the browser UI before increasing the runtime-verified count.

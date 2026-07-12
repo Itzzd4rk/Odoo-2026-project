@@ -183,11 +183,11 @@ Access rights for each ESG model are declared in `security/ir.model.access.csv`.
 - Department score records are snapshots rather than live dashboard calculations, preserving historical trends and dashboard performance.
 - Emission factors are archived (`active = False`) on deletion attempts to preserve historical calculations.
 
-## Known assumptions
+## Known limitations and design notes
 
-- Purchase orders are the implemented automatic emission source because manufacturing, employee expenses, and fleet are optional or non-core dependencies in this Community add-on.
-- ESG department membership is intentionally independent from Odoo HR departments and is maintained through `hr.employee.esg_department_id`.
-- An Odoo runtime installation test still needs to be performed in a local Odoo 17 Community database. Static Python, XML, icon, and required-file checks pass.
+- **Scope gap:** automatic carbon-transaction generation is implemented only for purchase orders. Manufacturing, employee expenses, and fleet remain valid source types for manually entered records, but their native automatic adapters are not built.
+- ESG department membership is intentionally independent from Odoo HR departments. The canonical stored field is `hr.employee.esg_department_id`; `esg.department.member_ids` is its inverse One2many field for department-side management.
+- A clean Odoo 17 Community install and upgrade smoke test has passed. Static Python and XML checks pass; browser/UI and the remaining workflow areas are tracked in the module progress file.
 
 ## Development status and roadmap
 

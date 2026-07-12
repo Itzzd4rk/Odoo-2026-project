@@ -1,4 +1,3 @@
-version: '3'
 services:
   db:
     image: postgres:15
@@ -20,7 +19,7 @@ services:
       USER: odoo
       PASSWORD: odoo
     volumes:
-      - ./addons:/mnt/extra-addons
+      - ./esg_management:/mnt/extra-addons/esg_management
       - odoo-web-data:/var/lib/odoo
 
 volumes:

@@ -11,7 +11,7 @@ class EsgDepartment(models.Model):
     code = fields.Char(required=True, index=True)
     head_id = fields.Many2one('hr.employee', string='Department Head')
     parent_id = fields.Many2one('esg.department', index=True, ondelete='restrict')
-    parent_path = fields.Char(index=True)
+    parent_path = fields.Char(index=True, unaccent=False)
     child_ids = fields.One2many('esg.department', 'parent_id')
     member_ids = fields.One2many('hr.employee', 'esg_department_id', string='Members')
     employee_count = fields.Integer(compute='_compute_employee_count')
