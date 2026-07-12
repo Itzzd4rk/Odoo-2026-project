@@ -187,7 +187,7 @@ Access rights for each ESG model are declared in `security/ir.model.access.csv`.
 
 - **Scope gap:** automatic carbon-transaction generation is implemented only for purchase orders. Manufacturing, employee expenses, and fleet remain valid source types for manually entered records, but their native automatic adapters are not built.
 - ESG department membership is intentionally independent from Odoo HR departments. The canonical stored field is `hr.employee.esg_department_id`; `esg.department.member_ids` is its inverse One2many field for department-side management.
-- A clean Odoo 17 Community install and regression suite have passed. The suite verifies badges, compliance crons and activities, score snapshots, access rules, QWeb reports/export actions, and permission-aware menu visibility. A final authenticated browser check for visual layout and actual XLSX/CSV downloads remains tracked in the module progress file.
+- A clean Odoo 17 Community install and regression suite have passed. The suite verifies badges, compliance crons and activities, score snapshots, access rules, QWeb reports/export actions, and permission-aware menu visibility. An authenticated browser check for visual layout and actual XLSX/CSV downloads has been verified successfully.
 
 ## Development status and roadmap
 
