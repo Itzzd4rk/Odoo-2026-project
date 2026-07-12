@@ -13,4 +13,4 @@ class EsgAudit(models.Model):
     audit_date = fields.Date()
     scope = fields.Text()
     status = fields.Selection([('planned', 'Planned'), ('in_progress', 'In Progress'), ('completed', 'Completed')], default='planned', tracking=True)
-    compliance_issue_ids = fields.One2many('esg.compliance.issue', 'audit_id')
+    compliance_issue_ids = fields.One2many('esg.compliance.issue', 'audit_id', string='Compliance Issues')

@@ -12,7 +12,7 @@ class EsgPolicy(models.Model):
     department_ids = fields.Many2many('esg.department', string='Target Departments')
     document = fields.Binary(attachment=True)
     status = fields.Selection([('draft', 'Draft'), ('published', 'Published'), ('archived', 'Archived')], default='draft', tracking=True)
-    acknowledgement_ids = fields.One2many('esg.policy.acknowledgement', 'policy_id')
+    acknowledgement_ids = fields.One2many('esg.policy.acknowledgement', 'policy_id', string='Acknowledgements')
     acknowledgement_rate = fields.Float(compute='_compute_acknowledgement_rate', string='Acknowledgement Rate (%)')
 
     @api.depends('acknowledgement_ids.status', 'department_ids')

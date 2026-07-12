@@ -10,12 +10,12 @@ class EsgChallenge(models.Model):
     title = fields.Char(required=True, tracking=True)
     description = fields.Text()
     category_id = fields.Many2one('esg.category', domain=[('type', '=', 'challenge')])
-    xp_value = fields.Integer(required=True)
+    xp_value = fields.Integer(required=True, string='XP Value')
     difficulty = fields.Selection([('easy', 'Easy'), ('medium', 'Medium'), ('hard', 'Hard')], default='easy')
     evidence_required = fields.Boolean()
     deadline = fields.Date()
     status = fields.Selection([('draft', 'Draft'), ('active', 'Active'), ('under_review', 'Under Review'), ('completed', 'Completed'), ('archived', 'Archived')], default='draft', required=True, tracking=True)
-    participation_ids = fields.One2many('esg.challenge.participation', 'challenge_id')
+    participation_ids = fields.One2many('esg.challenge.participation', 'challenge_id', string='Participations')
 
     def action_activate(self):
         """Activate a draft challenge only while its deadline remains in the future."""

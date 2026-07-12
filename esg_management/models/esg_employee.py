@@ -6,12 +6,12 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     esg_department_id = fields.Many2one('esg.department', string='ESG Department')
-    csr_participation_ids = fields.One2many('esg.employee.participation', 'employee_id')
-    challenge_participation_ids = fields.One2many('esg.challenge.participation', 'employee_id')
-    reward_redemption_ids = fields.One2many('esg.reward.redemption', 'employee_id')
+    csr_participation_ids = fields.One2many('esg.employee.participation', 'employee_id', string='CSR Participations')
+    challenge_participation_ids = fields.One2many('esg.challenge.participation', 'employee_id', string='Challenge Participations')
+    reward_redemption_ids = fields.One2many('esg.reward.redemption', 'employee_id', string='Reward Redemptions')
     total_xp = fields.Integer(compute='_compute_esg_points', string='Total ESG XP')
     available_points = fields.Integer(compute='_compute_esg_points', string='Available ESG Points')
-    badge_ids = fields.One2many('esg.employee.badge', 'employee_id')
+    badge_ids = fields.One2many('esg.employee.badge', 'employee_id', string='ESG Badges')
 
     @api.depends(
         'csr_participation_ids.points_earned',
