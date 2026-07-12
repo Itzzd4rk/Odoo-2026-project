@@ -1,0 +1,14 @@
+<odoo noupdate="1">
+    <record id="ir_cron_esg_overdue_compliance" model="ir.cron">
+        <field name="name">ESG: Check overdue compliance issues</field><field name="model_id" ref="model_esg_compliance_issue"/><field name="state">code</field><field name="code">model._cron_check_overdue_compliance_issues()</field><field name="interval_number">1</field><field name="interval_type">days</field><field name="active">True</field>
+    </record>
+    <record id="ir_cron_esg_score_snapshot" model="ir.cron">
+        <field name="name">ESG: Snapshot department scores</field><field name="model_id" ref="model_esg_department_score"/><field name="state">code</field><field name="code">model._cron_snapshot_scores()</field><field name="interval_number">1</field><field name="interval_type">days</field><field name="active">True</field>
+    </record>
+    <record id="ir_cron_esg_policy_reminders" model="ir.cron">
+        <field name="name">ESG: Send policy acknowledgement reminders</field><field name="model_id" ref="model_esg_policy_acknowledgement"/><field name="state">code</field><field name="code">model._cron_send_policy_reminders()</field><field name="interval_number">1</field><field name="interval_type">weeks</field><field name="active">True</field>
+    </record>
+    <record id="ir_cron_esg_goal_evaluation" model="ir.cron">
+        <field name="name">ESG: Evaluate environmental goals</field><field name="model_id" ref="model_esg_environmental_goal"/><field name="state">code</field><field name="code">model._cron_evaluate_goals()</field><field name="interval_number">1</field><field name="interval_type">days</field><field name="active">True</field>
+    </record>
+</odoo>

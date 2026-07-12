@@ -1,0 +1,12 @@
+.esg-dashboard { background: #f5f1e8; min-height: 100%; padding: 32px; color: #183a37; font-family: Georgia, serif; }
+.esg-dashboard__heading { border-bottom: 3px solid #c99b42; padding-bottom: 14px; margin-bottom: 25px; }
+.esg-dashboard__heading h1 { font-size: 31px; margin: 0; letter-spacing: -.8px; }
+.esg-dashboard__heading p { color: #697a6e; margin: 4px 0 0; font-family: "Trebuchet MS", sans-serif; }
+.esg-dashboard__grid { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 16px; }
+.esg-dashboard__card { background: #fffdf8; border: 1px solid #d9d0bd; border-top: 5px solid #42715e; padding: 18px; box-shadow: 5px 5px 0 rgba(24,58,55,.09); }
+.esg-dashboard__card--accent { border-top-color: #c99b42; }
+.esg-dashboard__label { color: #697a6e; font: 700 11px "Trebuchet MS", sans-serif; letter-spacing: 1.1px; text-transform: uppercase; }
+.esg-dashboard__value { font-size: 34px; margin-top: 7px; }
+.esg-dashboard__panel { background: #fffdf8; border: 1px solid #d9d0bd; padding: 22px; margin-top: 22px; max-width: 620px; }
+.esg-dashboard__panel h2 { margin-top: 0; font-size: 20px; }
+.esg-dashboard__leader { display: flex; justify-content: space-between; border-bottom: 1px dotted #c5baa3; padding: 8px 0; font-family: "Trebuchet MS", sans-serif; }

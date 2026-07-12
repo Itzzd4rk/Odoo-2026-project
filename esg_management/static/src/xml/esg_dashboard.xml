@@ -1,0 +1,16 @@
+<templates xml:space="preserve">
+    <t t-name="esg_management.EsgDashboard" owl="1">
+        <main class="esg-dashboard">
+            <header class="esg-dashboard__heading"><h1>EcoSphere ESG Ledger</h1><p>Measured progress, made visible.</p></header>
+            <t t-if="state.loaded">
+                <section class="esg-dashboard__grid">
+                    <article class="esg-dashboard__card esg-dashboard__card--accent"><div class="esg-dashboard__label">Overall ESG Score</div><div class="esg-dashboard__value"><t t-esc="state.kpis.overall"/>%</div></article>
+                    <article class="esg-dashboard__card"><div class="esg-dashboard__label">Environmental</div><div class="esg-dashboard__value"><t t-esc="state.kpis.environmental"/>%</div></article>
+                    <article class="esg-dashboard__card"><div class="esg-dashboard__label">Social</div><div class="esg-dashboard__value"><t t-esc="state.kpis.social"/>%</div></article>
+                    <article class="esg-dashboard__card"><div class="esg-dashboard__label">Governance</div><div class="esg-dashboard__value"><t t-esc="state.kpis.governance"/>%</div></article>
+                </section>
+                <section class="esg-dashboard__panel"><h2>Top contributors</h2><div t-foreach="state.kpis.leaders" t-as="leader" t-key="leader.name" class="esg-dashboard__leader"><span><t t-esc="leader.name"/></span><strong><t t-esc="leader.xp"/> XP</strong></div><p><strong><t t-esc="state.kpis.open_issues"/></strong> open compliance issues</p></section>
+            </t>
+        </main>
+    </t>
+</templates>
