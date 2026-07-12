@@ -6,6 +6,8 @@ Done (implemented): 12 / 12 acceptance items
 
 Done (runtime-verified): 10 / 12 acceptance items
 
+Fresh install verified on `fresh_test_db` (2026-07-12). Upgrade verified on `ecosphere_runtime_suite` after stopping the live Odoo container to avoid DB contention.
+
 ## ✅ Completed (implemented; runtime results noted where available)
 - [x] All 8 Master Data models implemented with listed fields
 - [x] All 9 Transactional Data models implemented with listed fields

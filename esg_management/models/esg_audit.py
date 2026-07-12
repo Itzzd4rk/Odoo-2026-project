@@ -9,7 +9,7 @@ class EsgAudit(models.Model):
     name = fields.Char(required=True, tracking=True)
     auditor_id = fields.Many2one('hr.employee', string='Internal Auditor')
     external_auditor_id = fields.Many2one('res.partner', string='External Auditor')
-    department_id = fields.Many2one('esg.department')
+    department_id = fields.Many2one('esg.department', ondelete='restrict')
     audit_date = fields.Date()
     scope = fields.Text()
     status = fields.Selection([('planned', 'Planned'), ('in_progress', 'In Progress'), ('completed', 'Completed')], default='planned', tracking=True)

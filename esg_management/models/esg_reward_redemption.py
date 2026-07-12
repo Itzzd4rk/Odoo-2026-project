@@ -7,10 +7,10 @@ class EsgRewardRedemption(models.Model):
     _name = 'esg.reward.redemption'
     _description = 'Reward Redemption'
 
-    employee_id = fields.Many2one('hr.employee', required=True)
-    reward_id = fields.Many2one('esg.reward', required=True)
+    employee_id = fields.Many2one('hr.employee', required=True, ondelete='restrict')
+    reward_id = fields.Many2one('esg.reward', required=True, ondelete='restrict')
     redemption_date = fields.Datetime(default=fields.Datetime.now, required=True)
-    points_deducted = fields.Integer(required=True, readonly=True)
+    points_deducted = fields.Integer(readonly=True, default=0)
 
     @classmethod
     def _redeem_for(cls, employee, reward, existing_redemption=None):

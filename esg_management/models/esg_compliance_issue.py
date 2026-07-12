@@ -11,7 +11,7 @@ class EsgComplianceIssue(models.Model):
     audit_id = fields.Many2one('esg.audit', required=True, ondelete='cascade')
     severity = fields.Selection([('low', 'Low'), ('medium', 'Medium'), ('high', 'High'), ('critical', 'Critical')], required=True, tracking=True)
     description = fields.Text()
-    owner_id = fields.Many2one('hr.employee', required=True)
+    owner_id = fields.Many2one('hr.employee', required=True, ondelete='restrict')
     due_date = fields.Date(required=True)
     status = fields.Selection([('open', 'Open'), ('in_progress', 'In Progress'), ('resolved', 'Resolved'), ('closed', 'Closed')], default='open', required=True, tracking=True)
     is_overdue = fields.Boolean(compute='_compute_is_overdue', store=True)

@@ -8,7 +8,7 @@ class EsgCsrActivity(models.Model):
     name = fields.Char(required=True)
     description = fields.Text()
     category_id = fields.Many2one('esg.category', domain=[('type', '=', 'csr_activity')])
-    department_id = fields.Many2one('esg.department')
+    department_id = fields.Many2one('esg.department', ondelete='restrict')
     date = fields.Date()
     status = fields.Selection([('planned', 'Planned'), ('ongoing', 'Ongoing'), ('completed', 'Completed'), ('cancelled', 'Cancelled')], default='planned', required=True)
     participation_ids = fields.One2many('esg.employee.participation', 'activity_id')

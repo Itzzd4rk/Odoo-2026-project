@@ -6,7 +6,7 @@ class EsgEnvironmentalGoal(models.Model):
     _description = 'Environmental Goal'
 
     name = fields.Char(required=True)
-    department_id = fields.Many2one('esg.department')
+    department_id = fields.Many2one('esg.department', ondelete='restrict')
     target_metric = fields.Selection([('total_emissions', 'Total Emissions'), ('emission_intensity', 'Emission Intensity'), ('custom', 'Custom')], default='total_emissions', required=True)
     target_value = fields.Float()
     current_value = fields.Float(compute='_compute_current_value')
